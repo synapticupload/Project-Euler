@@ -2,7 +2,8 @@
 
 #include "numlib.h"
 
-// primality check of an unsigned long or uint64_t
+// FUNCTION primeCheck: primality check of an unsigned long or uint64_t
+
 int primeCheck(unsigned long num) {
 
     // TODO: implement using sieve of erastothenes
