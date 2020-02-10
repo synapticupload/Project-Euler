@@ -108,15 +108,9 @@ int main(void) {
         {"53503534226472524250874054075591789781264330331690"}
     };
 
-    char testArray[5][5] = {
-        {"1234"},
-        {"4321"},
-        {"1243"},
-        {"2134"},
-        {"9999"}
-    };
-
-    printAlphaArray(addNumArrays(testArray[1], testArray[2]));
+    for (int i = 0; i < 50; i++) {
+        printAlphaArray(myArray[i]);
+    }
     
 
 

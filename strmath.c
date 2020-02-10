@@ -6,6 +6,7 @@
 //  get biggest string number
 //  get smallest int
 
+// count arguments
 int argCheck(int argCount) {
     if (argCount <= 1) {
         printf("Input required.\n");
@@ -29,13 +30,14 @@ int getArrayLength(char *src1) {
 int isArrayNumeric(char *src1) {
     for (int i = 0; src1[i] != '\0'; i++) {
         if (src1[i] > 57 || src1[i] < 48) {
-            printf("Arrays not numeric\n");
+            printf("Array is not numeric\n");
             return -1;
         }
     }
     return 0;
 }
 
+// convert array to heap
 char* convertToHeap(char * src) {
     int len = getArrayLength(src);
     char *parg = (char *) calloc(len, sizeof(char));
@@ -45,6 +47,7 @@ char* convertToHeap(char * src) {
     return parg;
 }
 
+// print array as characters
 void printAlphaArray(char *src1) {
     for (int i = 0; src1[i] != '\0'; i++) {
         printf("%c", src1[i]);
@@ -52,6 +55,7 @@ void printAlphaArray(char *src1) {
     return;
 }
 
+// print array as numbers
 void printNumArray(char *src1) {
     for (int i = 0; src1[i] != '\0'; i++) {
         printf("%d", src1[i]);
@@ -59,6 +63,7 @@ void printNumArray(char *src1) {
     printf("\n");
     return;
 }
+
 // TODO:
 //  accept an array of pointers to ints, so it can be indefinite
 //      return the pointer
@@ -96,7 +101,7 @@ char* getBiggestArray(char * src1, char * src2) {
 // TODO:
 char* getSmallestArray(char * src1, char * src2) {
     int len1 = getArrayLength(src1);
-    itn len2 = getArrayLength(src2);
+    int len2 = getArrayLength(src2);
     if (len1 == len2) {
         return NULL;
     }
@@ -117,32 +122,47 @@ char* getSmallestArray(char * src1, char * src2) {
 //  but, be prepared to handle the rest of the digits being 999999
 
 char * addNumArrays(char *src1, char *src2) {
+
+    // get the smallest length
     int len = getSmallestInt(getArrayLength(src1), getArrayLength(src2));
+
+    //get the biggest array 
     int lencarry = getBiggestInt(getArrayLength(src1), getArrayLength(src2));
+
+    // allocate memory for size of smallest length
     char *dst1 = (char *) calloc(len, sizeof(char));
 
     int result = 0;
     int carry = 0;
 
+    // get pointers to arrays
     char * largestArray = getBiggestArray(src1, src2);
     char * smallestArray = getSmallestArray(src1, src2);
-    if (largestArray == NULL) {
-      
+
     // main logic, works backwards from last number out
     // example, array w/1234, have to start at 4 since it is least significant
     for (int i = len; i >= 0; i--) {
+        
+        // evaluate sum, including previous "carry" if needed
         result = src1[i] + src2[i] + carry;
+
+        // if result less than 10, we don't need to carry
         if (result < 10) {
             dst1[i] = result;
             carry = 0;
         }
+
+        // if result >= 10, we need to carry "1" to next addition
         else if (result >= 10) {
             dst1[i] = (result % 10);
             carry = 1;
         }
     }
     
+    /*
     for (int i = (lencarry - len); i >= 0; i--) {
+    }
+    */
 
     return dst1;
 }
