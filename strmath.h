@@ -21,6 +21,6 @@
     extern char* getBiggestArray(char *src1, char *src2);
 
     // add numbers that are stored as arrays
-    extern char * addNumArrays(char *src1, char *src2);
+    extern char * addNumArrays(char *src1, char *src2, char *dst1);
 
 #endif
