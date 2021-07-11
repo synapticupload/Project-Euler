@@ -1,3 +1,3 @@
 # Project-Euler
+Mixed C/Python solutions for the first couple dozen or so project euler problems. Started working on a big number library, need to revisit this more.
 
-This is my space for practicing problems on www.projecteuler.net. The main problems are broken out by number several versions I've used for test code. Per their guidance I will only be posting code up to problem 100. 
